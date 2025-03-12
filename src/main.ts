@@ -5,6 +5,9 @@ import 'normalize.css'
 import 'unfonts.css'
 import '@/routes/permission'
 import 'virtual:svg-icons-register'
+import Vue3DraggableResizable from 'vue3-draggable-resizable'
+//default styles
+import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
 
 import 'element-plus/theme-chalk/index.css'
 
@@ -15,7 +18,7 @@ const pinia = createPinia()
 pinia.use(piniaPersist)
 const app = createApp(App)
 app.use(pinia).use(router)
-app.use(Plugin)
+app.use(Plugin).use(Vue3DraggableResizable)
 import * as Icons from '@element-plus/icons-vue'
 router.isReady().then(() => app.mount('#app'))
 for (const iconName in Icons) {

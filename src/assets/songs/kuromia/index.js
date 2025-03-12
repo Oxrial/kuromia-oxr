@@ -1,5 +1,11 @@
 export default [
 	{
+		song: '虹之间',
+		type: [0],
+		singer: '金贵晟',
+		tag: null
+	},
+	{
 		song: 'Forever young',
 		type: [1],
 		singer: '单依纯',

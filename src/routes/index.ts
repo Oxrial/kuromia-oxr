@@ -24,6 +24,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 		}
 	},
 	{
+		name: 'Test',
+		path: '/test',
+		component: () => import('@/views/test/index.vue'),
+		meta: {
+			title: '测试',
+			icon: 'Lollipop'
+		}
+	},
+	{
 		name: 'SongList',
 		path: '/song-list',
 		component: () => import('@/views/song-list/index.vue'),

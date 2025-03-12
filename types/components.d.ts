@@ -21,6 +21,7 @@ declare module 'vue' {
     ElTag: typeof import('element-plus/es')['ElTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SongItem: typeof import('./../src/components/song-item/index.vue')['default']
     SongList: typeof import('./../src/components/song-list/index.vue')['default']
     SvgIcon: typeof import('./../src/components/SvgIcon/index.vue')['default']
   }

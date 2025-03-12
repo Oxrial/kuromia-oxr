@@ -26,7 +26,8 @@
 		"vue-bilibili-embed-renderer-oxr": "^1.2.3",
 		"vue-fragment-oxr": "^2.6.6",
 		"vue-router": "^4.4.5",
-		"vue-types": "^5.1.3"
+		"vue-types": "^5.1.3",
+		"vue3-draggable-resizable": "^1.6.5"
 	},
 	"devDependencies": {
 		"@types/chrome": "^0.0.269",
