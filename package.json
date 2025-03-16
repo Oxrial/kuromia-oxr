@@ -20,6 +20,7 @@
 		"nprogress": "^0.2.0",
 		"pinia": "^2.2.2",
 		"pinia-plugin-persistedstate": "^3.2.3",
+		"pinyin-pro": "^3.26.0",
 		"vidstack": "^1.12.9",
 		"vite-svg-loader": "^5.1.0",
 		"vue": "^3.5.5",

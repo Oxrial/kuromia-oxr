@@ -5,10 +5,9 @@ export interface Logo {
 }
 export type Song = {
 	song: string
-	type: number[]
-	tag: number | null
-	singer: string
-	row?: number
+	type?: number[]
+	tag?: number | null
+	singer?: string
 	category?: number
 }
 type Avater = {
@@ -20,5 +19,10 @@ type Avater = {
 }
 export type SongList = {
 	songs: Song[]
-	specSongs?: Song[]
+	categories: object
+	avater?: Avater
+	vup: string
+	slogan?: string
+	logo?: Logo
+	logoCn?: string
 }
