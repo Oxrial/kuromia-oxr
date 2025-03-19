@@ -26,3 +26,9 @@ export type SongList = {
 	logo?: Logo
 	logoCn?: string
 }
+
+export type SliceSong = {
+	columns: string
+	list: Song[]
+	length: number
+}

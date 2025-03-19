@@ -313,11 +313,12 @@ watch(
 	}
 )
 const wwidth = ref(window.innerWidth)
-const { width } = useWindowSize()
 const resize = () => {
 	const xdom: HTMLDivElement = document.getElementsByClassName('song-main')[0] as HTMLDivElement
 	xdom && (wwidth.value = xdom.offsetWidth)
 }
+const { width } = useWindowSize()
+watch(() => width.value, resize)
 // 剪贴板
 const copySong = (v: Song) => {
 	if (isSupported) {
@@ -334,7 +335,6 @@ const copySong = (v: Song) => {
 	}
 }
 const itype = ref('song')
-watch(() => width.value, resize)
 onMounted(() => {
 	resize()
 	fz.value = +getComputedStyle(document.documentElement).getPropertyValue('font-size').replace('px', '')
