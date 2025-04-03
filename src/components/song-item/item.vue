@@ -31,7 +31,8 @@
 						'border-left': `.3125rem ${
 							(theme ? theme : color[resolveColor(index + 1, songs.length, songs.columns)] || '#a2d3ff') +
 							'44'
-						} solid`
+						} solid`,
+						color: theme ? theme : color[resolveColor(index + 1, songs.length, songs.columns)] || '#a2d3ff'
 					}"
 					@click="copySong(item)"
 				>

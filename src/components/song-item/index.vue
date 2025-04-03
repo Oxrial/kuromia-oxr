@@ -35,9 +35,13 @@
 				v-bind="avater.$attr || {}"
 			/>
 		</el-card>
-		<el-card v-for="category in Object.keys(groupedSongs)" :key="category" class="category-card">
+		<el-card
+			v-for="category in Object.keys(categories).sort((a, b) => categories[b].order - categories[a].order)"
+			:key="category"
+			class="category-card"
+		>
 			<template #header>
-				<div class="category-title">{{ categories[category as keyof typeof categories] }}</div>
+				<div class="category-title">{{ categories[category].label }}</div>
 			</template>
 			<Item :songss="sliceSongs(groupedSongs[category])" />
 		</el-card>

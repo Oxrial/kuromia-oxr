@@ -2,7 +2,8 @@ export default [
 	{
 		song: '虹之间',
 		type: [0],
-		singer: '金贵晟'
+		singer: '金贵晟',
+		category: 'pop'
 	},
 	{
 		song: 'Forever young',

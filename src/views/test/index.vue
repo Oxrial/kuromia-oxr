@@ -16,7 +16,8 @@ import songs1 from '@/assets/songs/kuromia/unknown'
 import songs2 from '@/assets/songs/kuromia'
 const isongs = [...songs1, ...songs2] as Song[]
 const categories = {
-	unknown: '未分类'
+	unknown: { label: '未分类', order: 0 },
+	pop: { label: '流行', order: 1 }
 }
 </script>
 
