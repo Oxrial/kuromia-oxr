@@ -73,8 +73,8 @@ const groupedSongs = computed(() => {
 const sliceSongs = (songs: Song[]) => {
 	const less = remove(songs, (s) => convLen(s.song) < 5)
 	return [
-		{ columns: '7rem auto', list: sortedSongs(less), length: less.length },
-		{ columns: '10rem auto', list: sortedSongs(songs), length: songs.length }
+		{ columns: 7.65, list: sortedSongs(less), length: less.length },
+		{ columns: 10.18, list: sortedSongs(songs), length: songs.length }
 	] as SliceSong[]
 }
 // 按拼音排序

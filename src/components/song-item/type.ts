@@ -28,7 +28,7 @@ export type SongList = {
 }
 
 export type SliceSong = {
-	columns: string
+	columns: number
 	list: Song[]
 	length: number
 }

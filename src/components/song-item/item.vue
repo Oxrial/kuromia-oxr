@@ -1,9 +1,8 @@
 <template>
-	{{ iw }}
 	<template v-for="(songs, index) in songss">
 		<div
 			class="song-columns-container"
-			:style="{ columns: songs.columns }"
+			:style="{ columns: `${songs.columns}rem auto` }"
 			:ref="(ref) => setPartRef(ref, 'part_' + index)"
 		>
 			<el-badge
@@ -25,15 +24,13 @@
 					disable-transitions
 					type="info"
 					:color="
-						(theme
-							? theme
-							: color[resolveColor(index + 1, songs.length, iw['part_' + index])] || '#a2d3ff') + '11'
+						(theme ? theme : color[resolveColor(index + 1, songs.length, songs.columns)] || '#a2d3ff') +
+						'11'
 					"
 					:style="{
 						'border-left': `.3125rem ${
-							(theme
-								? theme
-								: color[resolveColor(index + 1, songs.length, iw['part_' + index])] || '#a2d3ff') + '44'
+							(theme ? theme : color[resolveColor(index + 1, songs.length, songs.columns)] || '#a2d3ff') +
+							'44'
 						} solid`
 					}"
 					@click="copySong(item)"
@@ -85,9 +82,10 @@ const setPartRef = (el: any, category: string) => {
 		partRefs[category] = el
 	}
 }
-const resolveColor = computed(() => (i: number, length: number, iw: number) => {
-	console.log(i % (length / ceil(length / floor(wwidth.value / iw))))
-	return i % (length / ceil(length / floor(wwidth.value / iw)))
+const resolveColor = computed(() => (i: number, length: number, columns: number) => {
+	const rem = parseInt(getComputedStyle(document.documentElement).fontSize)
+	const colcount = floor(length / floor((wwidth.value / 2 - 30) / ceil(rem * (0.625 + columns) - 5))) + 1
+	return (ceil(i / colcount) - 1) % color.length
 })
 onMounted(() => {
 	console.log(partRefs)
@@ -125,6 +123,7 @@ watch(() => width.value, resize)
 	height: unset;
 	white-space: break-spaces;
 	justify-content: unset;
+	// margin-right: 0.625rem;
 }
 .song-item,
 .song-columns-container :deep(.el-space__item) {
