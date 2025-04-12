@@ -35,15 +35,8 @@
 				v-bind="avater.$attr || {}"
 			/>
 		</el-card>
-		<el-card
-			v-for="category in Object.keys(categories).sort((a, b) => categories[b].order - categories[a].order)"
-			:key="category"
-			class="category-card"
-		>
-			<template #header>
-				<div class="category-title">{{ categories[category].label }}</div>
-			</template>
-			<Item :songss="sliceSongs(groupedSongs[category])" />
+		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
+			<Item :songss="sliceSongs(groupedSongs[l])" />
 		</el-card>
 	</div>
 </template>
@@ -65,20 +58,27 @@ const props = withDefaults(defineProps<SongList>(), {
 })
 // 按类别分组
 const groupedSongs = computed(() => {
-	return props.songs.reduce(
-		(acc: Record<string, Song[]>, song) => {
-			if (song?.category && !acc[song?.category]) acc[song?.category] = []
-			song?.category ? acc[song?.category].push(song) : acc.unknown.push(song)
-			return acc
-		},
-		{ unknown: [] }
-	)
+	return props.songs.reduce((acc: Record<string, Song[]>, song) => {
+		let l = convLen(song.song)
+		l > 5 ? (l = 6) : l
+		if (!acc[`song${l}`]) acc[`song${l}`] = []
+		acc[`song${l}`].push(song)
+		return acc
+	}, {})
 })
 const sliceSongs = (songs: Song[]) => {
-	const less = remove(songs, (s) => convLen(s.song) < 5)
+	const less1 = remove(songs, (s) => convLen(s.song) < 2)
+	const less2 = remove(songs, (s) => convLen(s.song) < 3)
+	const less3 = remove(songs, (s) => convLen(s.song) < 4)
+	const less4 = remove(songs, (s) => convLen(s.song) < 5)
+	const less5 = remove(songs, (s) => convLen(s.song) < 6)
 	return [
-		{ columns: 7, list: sortedSongs(less), length: less.length },
-		{ columns: 10, list: sortedSongs(songs), length: songs.length }
+		...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : []),
+		...(less2.length ? [{ columns: 5, list: sortedSongs(less2), length: less2.length }] : []),
+		...(less3.length ? [{ columns: 5, list: sortedSongs(less3), length: less3.length }] : []),
+		...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : []),
+		...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : []),
+		...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])
 	] as SliceSong[]
 }
 // 按拼音排序
@@ -136,7 +136,8 @@ const sortedSongs = (songs: Song[]) => {
 }
 
 .category-card {
-	margin-bottom: 1.25rem;
+	margin-top: 1.25rem;
+	border-radius: 1.25rem;
 }
 
 .category-title {

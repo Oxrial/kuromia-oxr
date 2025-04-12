@@ -28,8 +28,17 @@ export const constantRoutes: RouteRecordRaw[] = [
 		path: '/test',
 		component: () => import('@/views/test/index.vue'),
 		meta: {
-			title: '测试',
-			icon: 'Lollipop'
+			title: '分类',
+			icon: 'Ticket'
+		}
+	},
+	{
+		name: 'Test1',
+		path: '/test1',
+		component: () => import('@/views/song-card/index.vue'),
+		meta: {
+			title: '分类1',
+			icon: 'Ticket'
 		}
 	},
 	{

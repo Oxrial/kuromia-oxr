@@ -10,7 +10,6 @@ export type Song = {
 	tagE?: Tag
 	color?: number
 	singer?: string
-	category?: number
 }
 type Avater = {
 	name?: string
@@ -19,13 +18,8 @@ type Avater = {
 	img?: boolean
 	src?: string
 }
-type Categories = {
-	label: string
-	order: number
-}
 export type SongList = {
 	songs: Song[]
-	categories: { [k in string]: Categories }
 	avater?: Avater
 	vup: string
 	slogan?: string
