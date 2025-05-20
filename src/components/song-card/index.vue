@@ -104,12 +104,12 @@ const sortedSongs = (songs: Song[]) => {
 		margin: 0 auto;
 	}
 	:deep(.el-card__body) {
-		padding: 0.9375rem;
+		padding: 0.75rem;
 	}
 }
 @media screen and (orientation: portrait) {
 	.main-container {
-		padding: 0.9375rem;
+		padding: 0.75rem;
 		margin: 0 auto;
 	}
 }
