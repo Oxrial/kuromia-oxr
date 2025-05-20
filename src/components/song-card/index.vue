@@ -1,5 +1,5 @@
 <template>
-	<div class="main-container">
+	<div ref="contentRef" class="main-container">
 		<el-card class="slogan" :style="{ '--slogan': `url(${slogan})` }">
 			<div
 				class="logo"
@@ -36,7 +36,7 @@
 			/>
 		</el-card>
 		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
-			<Item :songss="groupedSongs[l]" />
+			<Item :songss="groupedSongs[l]" :width="width" />
 		</el-card>
 	</div>
 </template>
@@ -47,6 +47,7 @@ import type { SliceSong, Song, SongList } from './type'
 import Item from './item.vue'
 import { convLen } from './index'
 import { remove } from 'lodash-es'
+import { useElementSize } from '@vueuse/core'
 const props = withDefaults(defineProps<SongList>(), {
 	songs: () => [] as Song[],
 	avater: () => ({}),
@@ -55,6 +56,9 @@ const props = withDefaults(defineProps<SongList>(), {
 	logo: () => ({ fontFamily: 'BEYNO', fontSize: '2.7rem', height: '5rem' }),
 	logoCn: '---'
 })
+const contentRef = useTemplateRef<HTMLElement>('contentRef')
+const { width } = useElementSize(contentRef)
+
 // 按类别分组
 const groupedSongs = computed(() => {
 	return sliceSongs(props.songs)
@@ -67,10 +71,10 @@ const sliceSongs = (songs: Song[]) => {
 	const less4 = remove(songs, (s) => convLen(s.song) < 5)
 	const less5 = remove(songs, (s) => convLen(s.song) < 6)
 	return {
-		song1: [...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : [])],
-		song2: [...(less2.length ? [{ columns: 5, list: sortedSongs(less2), length: less2.length }] : [])],
-		song3: [...(less3.length ? [{ columns: 5, list: sortedSongs(less3), length: less3.length }] : [])],
-		song4: [...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : [])],
+		song1: [...(less1.length ? [{ columns: 4.5, list: sortedSongs(less1), length: less1.length }] : [])],
+		song2: [...(less2.length ? [{ columns: 4.5, list: sortedSongs(less2), length: less2.length }] : [])],
+		song3: [...(less3.length ? [{ columns: 4.5, list: sortedSongs(less3), length: less3.length }] : [])],
+		song4: [...(less4.length ? [{ columns: 4.5, list: sortedSongs(less4), length: less4.length }] : [])],
 		song5: [...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : [])],
 		song6: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
 		songeng: [...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])]

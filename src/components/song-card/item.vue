@@ -40,10 +40,10 @@ import { useClipboard } from '@vueuse/core'
 import { SliceSong, Song } from './type'
 import { convLen } from './index'
 import { ceil, floor } from 'lodash-es'
-import { useWindowSize } from '@vueuse/core'
-const props = withDefaults(defineProps<{ songss: SliceSong[]; theme?: string }>(), {
+const props = withDefaults(defineProps<{ songss: SliceSong[]; theme?: string; width?: number }>(), {
 	songss: () => [],
-	theme: ''
+	theme: '',
+	width: 0
 })
 const TAG_ENUMS: { [key: number]: { label: string; color: string } } = {
 	3: { label: 'NEW', color: '#58c147' },
@@ -70,8 +70,11 @@ const copySong = (v: Song) => {
 }
 const isongss = ref<SliceSong[]>()
 const resolveLoop = (sliceSong: SliceSong, wwidth: number) => {
-	const rowcount = floor(((wwidth - 15) / 2 - 32) / ceil(rem.value * sliceSong.columns + 4))
+	const rowcount = floor((wwidth - 2 * rem.value) / ceil(rem.value * sliceSong.columns))
 	const colcount = ceil(sliceSong.list.length / rowcount)
+	// console.log(rem.value, sliceSong.columns)
+	// console.log('>>>', wwidth - 2 * rem.value, rem.value * sliceSong.columns)
+	// console.log(sliceSong, wwidth, rowcount, colcount)
 	sliceSong.list.forEach((s, i) => {
 		s.tag && (s.tagE = TAG_ENUMS[s.tag])
 		s.color = ceil((i + 1) / colcount - 1) % color.length
@@ -79,15 +82,14 @@ const resolveLoop = (sliceSong: SliceSong, wwidth: number) => {
 	return sliceSong
 }
 watch(
-	() => props.songss,
-	(n) => {
+	[() => props.songss, () => props.width],
+	([n]) => {
 		isongss.value = n
 	},
 	{ immediate: true, deep: true }
 )
 
 const rem = ref(parseInt(getComputedStyle(document.documentElement).fontSize))
-const { width } = useWindowSize()
 </script>
 
 <style lang="scss" scoped>
