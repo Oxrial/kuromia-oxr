@@ -71,11 +71,11 @@ const sliceSongs = (songs: Song[]) => {
 	const less4 = remove(songs, (s) => convLen(s.song) < 5)
 	const less5 = remove(songs, (s) => convLen(s.song) < 6)
 	return {
-		song1: [...(less1.length ? [{ columns: 4.5, list: sortedSongs(less1), length: less1.length }] : [])],
-		song2: [...(less2.length ? [{ columns: 4.5, list: sortedSongs(less2), length: less2.length }] : [])],
-		song3: [...(less3.length ? [{ columns: 4.5, list: sortedSongs(less3), length: less3.length }] : [])],
-		song4: [...(less4.length ? [{ columns: 4.5, list: sortedSongs(less4), length: less4.length }] : [])],
-		song5: [...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : [])],
+		song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
+		song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
+		song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
+		song4: [...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : [])],
+		song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
 		song6: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
 		songeng: [...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])]
 	} as { [key: string]: SliceSong[] }
@@ -123,7 +123,7 @@ const sortedSongs = (songs: Song[]) => {
 		.logo {
 			text-shadow: 0.0625rem 0.0625rem 0.125rem black;
 			color: white;
-			font-size: 2.7rem;
+			font-size: 2.5rem;
 			text-align: center;
 			font-weight: bolder;
 			font-family: BEYNO;
@@ -146,6 +146,9 @@ const sortedSongs = (songs: Song[]) => {
 .category-card {
 	margin-top: 1.25rem;
 	border-radius: 1.25rem;
+	:deep(.el-card__body) {
+		padding: 20px 10px 0 10px;
+	}
 }
 
 .category-title {

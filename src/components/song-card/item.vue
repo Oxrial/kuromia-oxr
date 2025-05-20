@@ -97,7 +97,7 @@ const rem = ref(parseInt(getComputedStyle(document.documentElement).fontSize))
 	column-gap: 0.625rem;
 }
 .el-tag {
-	min-width: 4.5rem;
+	min-width: 4rem;
 	width: inherit;
 	margin-bottom: 0.75rem;
 	line-height: unset;
@@ -112,7 +112,7 @@ const rem = ref(parseInt(getComputedStyle(document.documentElement).fontSize))
 	// width: 100%;
 	.el-tag {
 		font-size: 0.875rem;
-		height: 35px;
+		min-height: 1.5rem;
 	}
 }
 .song-item {
