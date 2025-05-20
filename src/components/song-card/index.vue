@@ -70,13 +70,15 @@ const sliceSongs = (songs: Song[]) => {
 	const less3 = remove(songs, (s) => convLen(s.song) < 4)
 	const less4 = remove(songs, (s) => convLen(s.song) < 5)
 	const less5 = remove(songs, (s) => convLen(s.song) < 6)
+	const less6 = remove(songs, (s) => convLen(s.song) < 7)
 	return {
 		song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
 		song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
 		song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
-		song4: [...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : [])],
+		song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
 		song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
-		song6: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
+		song6: [...(less6.length ? [{ columns: 9, list: sortedSongs(less6), length: less6.length }] : [])],
+		song7: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
 		songeng: [...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])]
 	} as { [key: string]: SliceSong[] }
 	// return [
