@@ -28,7 +28,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 		path: '/test',
 		component: () => import('@/views/test/index.vue'),
 		meta: {
-			title: '分类',
+			title: '类别分类',
 			icon: 'Ticket'
 		}
 	},
@@ -37,7 +37,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 		path: '/test1',
 		component: () => import('@/views/song-card/index.vue'),
 		meta: {
-			title: '分类1',
+			title: '长度分类',
 			icon: 'Ticket'
 		}
 	},

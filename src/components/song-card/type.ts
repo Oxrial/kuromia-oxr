@@ -5,7 +5,7 @@ export interface Logo {
 }
 export type Song = {
 	song: string
-	type?: number[]
+	type: number[]
 	tag?: number | null
 	tagE?: Tag
 	color?: number

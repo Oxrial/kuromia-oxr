@@ -36,7 +36,7 @@
 			/>
 		</el-card>
 		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
-			<Item :songss="sliceSongs(groupedSongs[l])" />
+			<Item :songss="groupedSongs[l]" />
 		</el-card>
 	</div>
 </template>
@@ -50,36 +50,40 @@ import { remove } from 'lodash-es'
 const props = withDefaults(defineProps<SongList>(), {
 	songs: () => [] as Song[],
 	avater: () => ({}),
-	categories: () => ({}),
-	vip: '---',
+	vup: '---',
 	slogan: '',
 	logo: () => ({ fontFamily: 'BEYNO', fontSize: '2.7rem', height: '5rem' }),
 	logoCn: '---'
 })
 // 按类别分组
 const groupedSongs = computed(() => {
-	return props.songs.reduce((acc: Record<string, Song[]>, song) => {
-		let l = convLen(song.song)
-		l > 5 ? (l = 6) : l
-		if (!acc[`song${l}`]) acc[`song${l}`] = []
-		acc[`song${l}`].push(song)
-		return acc
-	}, {})
+	return sliceSongs(props.songs)
 })
 const sliceSongs = (songs: Song[]) => {
+	const eng = remove(songs, (s) => s.type.includes(1))
 	const less1 = remove(songs, (s) => convLen(s.song) < 2)
 	const less2 = remove(songs, (s) => convLen(s.song) < 3)
 	const less3 = remove(songs, (s) => convLen(s.song) < 4)
 	const less4 = remove(songs, (s) => convLen(s.song) < 5)
 	const less5 = remove(songs, (s) => convLen(s.song) < 6)
-	return [
-		...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : []),
-		...(less2.length ? [{ columns: 5, list: sortedSongs(less2), length: less2.length }] : []),
-		...(less3.length ? [{ columns: 5, list: sortedSongs(less3), length: less3.length }] : []),
-		...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : []),
-		...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : []),
-		...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])
-	] as SliceSong[]
+	return {
+		song1: [...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : [])],
+		song2: [...(less2.length ? [{ columns: 5, list: sortedSongs(less2), length: less2.length }] : [])],
+		song3: [...(less3.length ? [{ columns: 5, list: sortedSongs(less3), length: less3.length }] : [])],
+		song4: [...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : [])],
+		song5: [...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : [])],
+		song6: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
+		songeng: [...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])]
+	} as { [key: string]: SliceSong[] }
+	// return [
+	// 	...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : []),
+	// 	...(less2.length ? [{ columns: 5, list: sortedSongs(less2), length: less2.length }] : []),
+	// 	...(less3.length ? [{ columns: 5, list: sortedSongs(less3), length: less3.length }] : []),
+	// 	...(less4.length ? [{ columns: 5, list: sortedSongs(less4), length: less4.length }] : []),
+	// 	...(less5.length ? [{ columns: 6.6, list: sortedSongs(less5), length: less5.length }] : []),
+	// 	...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : []),
+	// 	...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])
+	// ] as SliceSong[]
 }
 // 按拼音排序
 const sortedSongs = (songs: Song[]) => {
