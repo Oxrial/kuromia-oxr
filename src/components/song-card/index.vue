@@ -78,8 +78,8 @@ const sliceSongs = (songs: Song[]) => {
 		song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
 		song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
 		song6: [...(less6.length ? [{ columns: 9, list: sortedSongs(less6), length: less6.length }] : [])],
-		song7: [...(songs.length ? [{ columns: 9, list: sortedSongs(songs), length: songs.length }] : [])],
-		songeng: [...(eng.length ? [{ columns: 9, list: sortedSongs(eng), length: eng.length }] : [])]
+		song7: [...(songs.length ? [{ columns: 10, list: sortedSongs(songs), length: songs.length }] : [])],
+		songeng: [...(eng.length ? [{ columns: 10, list: sortedSongs(eng), length: eng.length }] : [])]
 	} as { [key: string]: SliceSong[] }
 	// return [
 	// 	...(less1.length ? [{ columns: 5, list: sortedSongs(less1), length: less1.length }] : []),

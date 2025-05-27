@@ -11,6 +11,7 @@ export type Song = {
 	color?: number
 	singer?: string
 	category?: number
+	len?: number
 }
 type Avater = {
 	name?: string

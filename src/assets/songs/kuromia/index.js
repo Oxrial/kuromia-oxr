@@ -1,4 +1,255 @@
+/*
+const TAG_ENUMS: { [key: number]: { label: string; color: string } } = {
+	3: { label: 'NEW', color: '#58c147' },
+	1: { label: 'SC', color: '#ff9a8b' },
+	2: { label: '舰长', color: '#66bbf9' }
+}
+*/
+/*
+type 中文 0，其他语言 1，流行 2，民谣 3，古风 4，R&B 5，Rap 6
+const TYPE_ENUMS: { [key: number]: string } = {
+	0: '华语',
+	1: '其他语言',
+	2: '流行',
+	3: '民谣',
+	4: '古风',
+	5: 'R&B',
+	6: 'Rap'
+	7： 粤语
+}
+*/
 export default [
+	{
+		song: '租购',
+		type: [0],
+		singer: '薛之谦',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '你啊你啊',
+		type: [0],
+		singer: '魏如萱',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '还有什么更好的',
+		type: [0],
+		singer: '单依纯',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '月牙湾',
+		type: [0],
+		singer: 'F.I.R.',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '寄明月',
+		type: [0],
+		singer: 'SING女团',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '离歌',
+		type: [0],
+		singer: '阿信',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '世界赠与我的',
+		type: [0],
+		singer: '王菲',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '就是哪吒',
+		type: [0],
+		singer: '唐汉霄',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: 'Ferrari',
+		type: [0],
+		singer: 'Bebe Rexha',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '痴梦李贺',
+		type: [0],
+		singer: '我且歌谣/漠老师',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '寂寞烟火',
+		type: [0],
+		singer: '朱婧汐',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '四季万象',
+		type: [0],
+		singer: '小林未郁',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '燕尾蝶',
+		type: [0],
+		singer: '梁静茹',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '只为自己开的花',
+		type: [0],
+		singer: '大张伟',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '我不需要',
+		type: [0],
+		singer: 'Fine乐团',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: 'My Anata',
+		type: [0],
+		singer: '陶喆',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '你是我的布鲁',
+		type: [0],
+		singer: '秦凡淇',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '大雨将至',
+		type: [0],
+		singer: '徐佳莹',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '向前冲',
+		type: [0],
+		singer: '徐怀钰',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '戒不掉',
+		type: [7],
+		singer: '欧阳耀莹',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '毕业通知',
+		type: [0],
+		singer: '洛天依',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '靠近',
+		type: [0],
+		singer: '罗震环',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '爱你不问归期',
+		type: [0],
+		singer: '康梓子',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '交换余生',
+		type: [0],
+		singer: '林俊杰',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '感觉自己是巨星',
+		type: [0],
+		singer: '毛不易',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '如果有一天我变得很有钱',
+		type: [0],
+		singer: '毛不易',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '心里学',
+		type: [0],
+		singer: '徐佳莹',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '我管不住我自己',
+		type: [0],
+		singer: '单依纯',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '珠玉',
+		type: [0],
+		singer: '单依纯',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '苏丽珍',
+		type: [0],
+		singer: '方大同',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '莉莉安',
+		type: [0],
+		singer: '徐佳莹',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '不问天',
+		type: [4],
+		singer: '说说Crystal',
+		category: 'pop',
+		tag: 3
+	},
+	{
+		song: '我要',
+		type: [0],
+		singer: '野生三十',
+		category: 'pop',
+		tag: 3
+	},
 	{
 		song: '虹之间',
 		type: [0],
@@ -13,8 +264,7 @@ export default [
 	{
 		song: '鱼儿',
 		type: [0],
-		singer: '鲁向卉',
-		tag: 3
+		singer: '鲁向卉'
 	},
 	{
 		song: '我我',
@@ -29,8 +279,7 @@ export default [
 	{
 		song: '小雨',
 		type: [0],
-		singer: '黄龄',
-		tag: 3
+		singer: '黄龄'
 	},
 	{
 		song: '九儿',
@@ -1503,5 +1752,636 @@ export default [
 		song: '我喜欢上你时的内心活动',
 		type: [0, 2],
 		singer: '陈绮贞'
+	},
+
+	{
+		song: 'Fly',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Happy new year!!!',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Happy brithday!!!',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'everytime',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Only hope',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'last kiss',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Love the way you lie ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Call of silence',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Photograph',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Back to december',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'City of stars',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'all of me ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Hey jude ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'just the way you are',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Say something ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'paper hearts',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'A thousand years',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Someone like you ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'someone u loved',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Easy on me ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'love story',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'love yourself',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'perfect',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Royals',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Rise',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'almost lover',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Million reasons',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Let her go ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'letting go ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'if i aint got you ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'when i was your man ',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Taking to the moon',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'love y like a love song',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'Make you feel my love',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'I really want you stay at your house',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'dacapo',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'The climb',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: 'crystal clear',
+		type: [1],
+		singer: ''
+	},
+	{
+		song: '戒你',
+		type: [0],
+		singer: '陶心瑶'
+	},
+	{
+		song: '微微',
+		type: [0],
+		singer: '傅如乔'
+	},
+	{
+		song: '不痛',
+		type: [0],
+		singer: '周笔畅'
+	},
+	{
+		song: '忘词',
+		type: [0],
+		singer: '五月天'
+	},
+	{
+		song: '心火',
+		type: [0],
+		singer: '姚贝娜'
+	},
+	{
+		song: '纯白',
+		type: [0],
+		singer: '双笙'
+	},
+	{
+		song: '赤伶',
+		type: [0],
+		singer: '谭晶'
+	},
+	{
+		song: '慌颜',
+		type: [0],
+		singer: '苏诗丁'
+	},
+	{
+		song: '诀爱',
+		type: [0],
+		singer: '詹雯婷'
+	},
+	{
+		song: '停格',
+		type: [0],
+		singer: '蔡健雅'
+	},
+	{
+		song: '人间',
+		type: [0],
+		singer: '王菲'
+	},
+	{
+		song: '人啊',
+		type: [0],
+		singer: '徐佳莹'
+	},
+	{
+		song: '人是_',
+		type: [0],
+		singer: '周深'
+	},
+	{
+		song: '叶子',
+		type: [0],
+		singer: '阿桑'
+	},
+	{
+		song: '解药',
+		type: [0],
+		singer: '孟慧圆'
+	},
+	{
+		song: '天空',
+		type: [0],
+		singer: '单依纯'
+	},
+	{
+		song: '蔷薇',
+		type: [0],
+		singer: '萧亚轩'
+	},
+	{
+		song: 'love！',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '刚刚',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '恰好',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '仰望',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '雨天',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '时候',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '即刻',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '疯子',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '问情',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '独到',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '歌者',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '赤鲸',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '昔言',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '分身',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '依恋',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '拨云',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '借梦',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '梦返',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '冥明',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '吟',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '痒',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '让',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '马',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '喂',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '蝇',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '笼',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '11',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '天下局',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '闹哄哄',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '哈哈哈',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '安静了',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '我很好',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '好运来',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '木兰星',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '抛物线',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '白月光',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '从前慢',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '猪猪侠',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '桃花笑',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '到不了',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '你曾说',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '小跳蛙',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '虫儿飞',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '嘿!抬头',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '健康歌',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '一点点',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '人世间',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '我走后',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '苏州河',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '爱情而已',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '两只老虎',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '爱情悬崖',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '再见深海',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '天空之外',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '理想三旬',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '坏的好人',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '逝去的歌',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '梦醒时分',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '月下忘川',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '最冷一天',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '黄色大门',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '告白之夜',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '世末歌者',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '天气预报',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '星星失眠',
+		type: [0],
+		singer: ''
+	},
+	{
+		song: '心愿便利贴',
+		type: [0],
+		singer: '元若蓝'
+	},
+	{
+		song: 'G大调悲伤',
+		type: [0],
+		singer: '馨予'
+	},
+	{
+		song: '烟雨唱扬州',
+		type: [0],
+		singer: '李殊'
+	},
+	{
+		song: '乌兰巴托的夜',
+		type: [0],
+		singer: '谭维维'
+	},
+	{
+		song: '听我说谢谢你',
+		type: [0],
+		singer: '童可可'
+	},
+	{
+		song: '蜜雪冰城甜蜜蜜',
+		type: [0],
+		singer: '蜜雪冰城'
 	}
 ]

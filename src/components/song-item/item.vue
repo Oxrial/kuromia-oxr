@@ -14,8 +14,9 @@
 				}"
 				:offset="[-16, 5]"
 				class="song-item"
-				:class="{ 'long-text': convLen(item.song) >= 9 }"
+				:class="{ 'long-text': item.len! > 9 }"
 			>
+				{{ item.len }}-{{ item.len! > 9 }}
 				<el-tag
 					disable-transitions
 					type="info"
@@ -76,6 +77,7 @@ const resolveLoop = (sliceSong: SliceSong, wwidth: number) => {
 	sliceSong.list.forEach((s, i) => {
 		s.tag && (s.tagE = TAG_ENUMS[s.tag])
 		s.color = ceil((i + 1) / colcount - 1) % color.length
+		s.len = convLen(s.song)
 	})
 	return sliceSong
 }
