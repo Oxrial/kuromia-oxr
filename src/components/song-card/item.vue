@@ -70,7 +70,7 @@ const copySong = (v: Song) => {
 }
 const isongss = ref<SliceSong[]>()
 const resolveLoop = (sliceSong: SliceSong, wwidth: number) => {
-	const rowcount = floor(wwidth / (ceil(rem.value * sliceSong.columns) + 10))
+	const rowcount = floor(wwidth / (ceil(rem.value * sliceSong.columns) + 15))
 	const colcount = ceil(sliceSong.list.length / rowcount)
 	sliceSong.list.forEach((s, i) => {
 		s.tag && (s.tagE = TAG_ENUMS[s.tag])

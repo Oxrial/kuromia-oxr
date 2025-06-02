@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'
 export const constantRoutes: RouteRecordRaw[] = [
 	{
 		path: '/',
-		redirect: '/song-list',
+		redirect: '/kuromiya',
 		meta: { hidden: true }
 	},
 	{
@@ -33,8 +33,8 @@ export const constantRoutes: RouteRecordRaw[] = [
 		}
 	},
 	{
-		name: 'Test1',
-		path: '/test1',
+		name: 'Kuromiya',
+		path: '/kuromiya',
 		component: () => import('@/views/song-card/index.vue'),
 		meta: {
 			title: '长度分类',
