@@ -37,7 +37,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 		path: '/kuromiya',
 		component: () => import('@/views/song-card/index.vue'),
 		meta: {
-			title: '长度分类',
+			title: '库洛米娅',
 			icon: 'Ticket'
 		}
 	},
@@ -46,7 +46,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 		path: '/song-list',
 		component: () => import('@/views/song-list/index.vue'),
 		meta: {
-			title: '库洛米娅',
+			title: '库洛米娅old',
 			icon: 'Tickets'
 		}
 	},

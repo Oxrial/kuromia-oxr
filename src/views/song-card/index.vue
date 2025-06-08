@@ -2,8 +2,11 @@
 	<SongCard
 		:songs="isongs"
 		:slogan="slogan"
-		:avater="{ is: 'ElImage', img: true }"
+		:avater="{ name: 'kuku' }"
 		vup="KUROMIA"
+		:logo="{
+			fontSize: '2.45rem'
+		}"
 		logo-cn="库洛米娅"
 	/>
 </template>

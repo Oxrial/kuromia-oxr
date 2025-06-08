@@ -1,39 +1,46 @@
 <template>
 	<div ref="contentRef" class="main-container">
 		<el-card class="slogan" :style="{ '--slogan': `url(${slogan})` }">
-			<div
-				class="logo"
-				:style="{
-					'font-family': logo.fontFamily,
-					'font-size': logo.fontSize,
-					height: logo.height
-				}"
-			>
-				{{ vup }}
-			</div>
-			<div>
-				<div class="logo-cn">{{ logoCn }}</div>
+			<div style="min-height: 10rem">
 				<div
-					style="
-						text-align: right;
-						font-size: 0.875rem;
-						text-shadow: 0.0625rem 0.0625rem 0.125rem black;
-						color: white;
-					"
+					class="logo"
+					:style="{
+						'font-family': logo.fontFamily,
+						'font-size': logo.fontSize,
+						height: logo.height
+					}"
 				>
-					注：若页面异常请看图片版本
+					{{ vup }}
 				</div>
+				<div>
+					<div class="logo-cn">{{ logoCn }}</div>
+					<div
+						style="
+							text-align: right;
+							font-size: 0.875rem;
+							text-shadow: 0.0625rem 0.0625rem 0.125rem black;
+							color: white;
+						"
+					>
+						注：若页面异常请看图片版本
+					</div>
+				</div>
+				<SvgIcon
+					:name="avater.name || ''"
+					:img="avater.img"
+					:src="avater.src || ''"
+					width="4.375rem"
+					height="4.375rem"
+					:is="avater.is || 'v-fragment'"
+					:in-style="{
+						top: '5.5rem',
+						position: 'absolute',
+						'border-radius': '.9375rem',
+						'margin-left': '5%'
+					}"
+					v-bind="avater.$attr || {}"
+				/>
 			</div>
-			<SvgIcon
-				:name="avater.name || ''"
-				:img="avater.img"
-				:src="avater.src || ''"
-				width="4.375rem"
-				height="4.375rem"
-				:is="avater.is || 'v-fragment'"
-				:in-style="{ top: '5.5rem', position: 'absolute', 'border-radius': '.9375rem' }"
-				v-bind="avater.$attr || {}"
-			/>
 		</el-card>
 		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
 			<Item :songss="groupedSongs[l]" :width="width" />
