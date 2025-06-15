@@ -1,12 +1,10 @@
 <template>
 	<SongCard
 		:songs="isongs"
+		:pnglogo="pnglogo"
 		:slogan="slogan"
 		:avater="{ name: 'kuku' }"
-		vup="KUROMIA"
-		:logo="{
-			fontSize: '2.45rem'
-		}"
+		vup="Kuromiya"
 		logo-cn="库洛米娅"
 	/>
 </template>
@@ -16,6 +14,7 @@ import type { Song } from '@/components/song-card/type'
 import slogan from '@/assets/cool-background.png'
 import songs1 from '@/assets/songs/kuromia/unknown'
 import songs2 from '@/assets/songs/kuromia'
+import pnglogo from '@/assets/icons/logo.png'
 const isongs = [...songs1, ...songs2] as Song[]
 </script>
 

@@ -1,6 +1,6 @@
 <template>
 	<div ref="contentRef" class="main-container">
-		<el-card class="slogan" :style="{ '--slogan': `url(${slogan})` }">
+		<el-card v-if="logo && !pnglogo" class="slogan" :style="{ '--slogan': `url(${slogan})` }">
 			<div style="min-height: 10rem">
 				<div
 					class="logo"
@@ -40,6 +40,44 @@
 					}"
 					v-bind="avater.$attr || {}"
 				/>
+			</div>
+		</el-card>
+		<el-card v-else class="slogan" :style="{ '--slogan': `url(${slogan})` }">
+			<div class="logo-main" :style="{ '--logo': `url(${pnglogo})` }">
+				<el-row>
+					<el-col :span="6">
+						<div>
+							<SvgIcon
+								:name="avater.name || ''"
+								:img="avater.img"
+								:src="avater.src || ''"
+								width="4.375rem"
+								height="4.375rem"
+								:is="avater.is || 'v-fragment'"
+								:in-style="{
+									top: '8.5rem',
+									position: 'absolute',
+									'border-radius': '.9375rem'
+								}"
+								v-bind="avater.$attr || {}"
+							/>
+						</div>
+					</el-col>
+					<el-col :span="18"> </el-col>
+				</el-row>
+			</div>
+			<div>
+				<div class="logo-cn">{{ logoCn }}</div>
+				<div
+					style="
+						text-align: right;
+						font-size: 0.875rem;
+						text-shadow: 0.0625rem 0.0625rem 0.125rem black;
+						color: white;
+					"
+				>
+					注：若页面异常请看图片版本
+				</div>
 			</div>
 		</el-card>
 		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
@@ -120,6 +158,15 @@ const sortedSongs = (songs: Song[]) => {
 		background-repeat: no-repeat;
 		background-size: cover;
 		position: relative;
+		.logo-main {
+			height: 10rem;
+			background: var(--logo) 50%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			.el-row {
+				height: 100%;
+			}
+		}
 		.logo {
 			text-shadow: 0.0625rem 0.0625rem 0.125rem black;
 			color: white;

@@ -2,6 +2,7 @@ export interface Logo {
 	fontFamily?: string
 	fontSize?: string
 	height?: string
+	img?: string
 }
 export type Song = {
 	song: string
@@ -25,6 +26,7 @@ export type SongList = {
 	slogan?: string
 	logo?: Logo
 	logoCn?: string
+	pnglogo?: string
 }
 type Tag = {
 	label: string
