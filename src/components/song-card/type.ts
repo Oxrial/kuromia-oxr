@@ -19,7 +19,12 @@ type Avater = {
 	img?: boolean
 	src?: string
 }
-export type SongList = {
+type Cate = {
+	label: string
+	code: string
+	value: number
+}
+export type SongProp = {
 	songs: Song[]
 	avater?: Avater
 	vup: string
@@ -27,6 +32,9 @@ export type SongList = {
 	logo?: Logo
 	logoCn?: string
 	pnglogo?: string
+	theme?: string
+	color?: string[]
+	cates?: Cate[]
 }
 type Tag = {
 	label: string

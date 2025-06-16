@@ -12,7 +12,7 @@
 				>
 					{{ vup }}
 				</div>
-				<div>
+				<div style="position: absolute; right: 5%; bottom: 10%">
 					<div class="logo-cn">{{ logoCn }}</div>
 					<div
 						style="
@@ -80,26 +80,32 @@
 				</div>
 			</div>
 		</el-card>
-		<el-card v-for="l in Object.keys(groupedSongs).sort()" :key="l" class="category-card">
-			<Item :songss="groupedSongs[l]" :width="width" />
+		<el-card v-for="l in Object.keys(groupedSongs)" :key="l" class="category-card">
+			<template v-if="icates.find((c) => c.code === l)" #header>
+				<span :style="{ color: color[0] }">{{ icates.find((c) => c.code === l)?.label }}</span></template
+			>
+			<Item :songss="groupedSongs[l]" :width="width" :theme="theme" :color="color" />
 		</el-card>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { pinyin } from 'pinyin-pro'
-import type { SliceSong, Song, SongList } from './type'
+import type { SliceSong, Song, SongProp } from './type'
 import Item from './item.vue'
 import { convLen } from './index'
 import { remove } from 'lodash-es'
 import { useElementSize } from '@vueuse/core'
-const props = withDefaults(defineProps<SongList>(), {
+const props = withDefaults(defineProps<SongProp>(), {
 	songs: () => [] as Song[],
 	avater: () => ({}),
 	vup: '---',
 	slogan: '',
 	logo: () => ({ fontFamily: 'BEYNO', fontSize: '2.7rem', height: '5rem' }),
-	logoCn: '---'
+	logoCn: '---',
+	theme: '',
+	color: () => ['#66bbf9', '#d69dff', '#ff9a8b', '#d1ac3c', '#58c147'],
+	cates: () => []
 })
 const contentRef = useTemplateRef<HTMLElement>('contentRef')
 const { width } = useElementSize(contentRef)
@@ -108,8 +114,24 @@ const { width } = useElementSize(contentRef)
 const groupedSongs = computed(() => {
 	return sliceSongs(props.songs)
 })
+const icates = [
+	{
+		label: '英文',
+		code: 'eng',
+		value: 1
+	},
+	...props.cates
+]
+const cateList = (list: Song[]) => [
+	...(list.length ? [{ columns: 9.2, list: sortedSongs(list), length: list.length }] : [])
+]
 const sliceSongs = (songs: Song[]) => {
-	const eng = remove(songs, (s) => s.type.includes(1))
+	const res = {} as { [key: string]: SliceSong[] }
+	icates.forEach((c) => {
+		res[c.code] = cateList(remove(songs, (s) => s.type.includes(c.value)))
+	})
+	// const eng = remove(songs, (s) => s.type.includes(1))
+	// const oth = remove(songs, (s) => s.type.includes(6))
 	const less1 = remove(songs, (s) => convLen(s.song) < 2)
 	const less2 = remove(songs, (s) => convLen(s.song) < 3)
 	const less3 = remove(songs, (s) => convLen(s.song) < 4)
@@ -124,7 +146,7 @@ const sliceSongs = (songs: Song[]) => {
 		song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
 		song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
 		song7: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs), length: songs.length }] : [])],
-		songeng: [...(eng.length ? [{ columns: 9.2, list: sortedSongs(eng), length: eng.length }] : [])]
+		...res
 	} as { [key: string]: SliceSong[] }
 }
 // 按拼音排序
@@ -195,6 +217,10 @@ const sortedSongs = (songs: Song[]) => {
 	border-radius: 1.25rem;
 	:deep(.el-card__body) {
 		padding: 20px 10px 0 10px;
+	}
+	:deep(.el-card__header) {
+		padding: 10px 20px;
+		font-style: italic;
 	}
 }
 

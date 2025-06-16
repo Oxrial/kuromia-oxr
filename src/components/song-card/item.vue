@@ -40,10 +40,11 @@ import { useClipboard } from '@vueuse/core'
 import { SliceSong, Song } from './type'
 import { convLen } from './index'
 import { ceil, floor } from 'lodash-es'
-const props = withDefaults(defineProps<{ songss: SliceSong[]; theme?: string; width?: number }>(), {
+const props = withDefaults(defineProps<{ songss: SliceSong[]; theme?: string; width?: number; color: string[] }>(), {
 	songss: () => [],
 	theme: '',
-	width: 0
+	width: 0,
+	color: () => []
 })
 const TAG_ENUMS: { [key: number]: { label: string; color: string } } = {
 	3: { label: 'NEW', color: '#58c147' },
@@ -51,7 +52,6 @@ const TAG_ENUMS: { [key: number]: { label: string; color: string } } = {
 	2: { label: '舰长', color: '#66bbf9' }
 }
 
-const color = ['#66bbf9', '#d69dff', '#ff9a8b', '#d1ac3c', '#58c147']
 const source = ref('---')
 const { copy, isSupported } = useClipboard({ source })
 const copySong = (v: Song) => {
@@ -74,7 +74,7 @@ const resolveLoop = (sliceSong: SliceSong, wwidth: number) => {
 	const colcount = ceil(sliceSong.list.length / rowcount)
 	sliceSong.list.forEach((s, i) => {
 		s.tag && (s.tagE = TAG_ENUMS[s.tag])
-		s.color = ceil((i + 1) / colcount - 1) % color.length
+		s.color = ceil((i + 1) / colcount - 1) % props.color.length
 	})
 	return sliceSong
 }
