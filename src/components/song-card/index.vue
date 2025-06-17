@@ -94,7 +94,7 @@ import { pinyin } from 'pinyin-pro'
 import type { SliceSong, Song, SongProp } from './type'
 import Item from './item.vue'
 import { convLen } from './index'
-import { remove } from 'lodash-es'
+import { remove, uniqBy } from 'lodash-es'
 import { useElementSize } from '@vueuse/core'
 const props = withDefaults(defineProps<SongProp>(), {
 	songs: () => [] as Song[],
@@ -112,7 +112,7 @@ const { width } = useElementSize(contentRef)
 
 // 按类别分组
 const groupedSongs = computed(() => {
-	return sliceSongs(props.songs)
+	return sliceSongs(uniqBy(props.songs, 'song'))
 })
 const icates = [
 	{
