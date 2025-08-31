@@ -80,12 +80,18 @@
 				</div>
 			</div>
 		</el-card>
-		<el-card v-for="l in Object.keys(groupedSongs)" :key="l" class="category-card">
-			<template v-if="icates.find((c) => c.code === l)" #header>
-				<span :style="{ color: color[0] }">{{ icates.find((c) => c.code === l)?.label }}</span></template
-			>
-			<Item :songss="groupedSongs[l]" :width="width" :theme="theme" :color="color" />
-		</el-card>
+		<template v-for="lk in Object.keys(groupedSongs)">
+			<template v-for="(lenSong, _, index) in lenSongs(groupedSongs[lk].flatMap((s) => s.list))">
+				<el-card class="category-card" v-if="lenSong[0]?.list.length">
+					<template v-if="index === 0 && icates.find((c) => c.code === lk)" #header>
+						<span :style="{ color: color[0] }"
+							>{{ icates.find((c) => c.code === lk)?.label }}
+						</span></template
+					>
+					<Item :songss="lenSong" :width="width" :theme="theme" :color="color" />
+				</el-card>
+			</template>
+		</template>
 	</div>
 </template>
 
@@ -114,14 +120,7 @@ const { width } = useElementSize(contentRef)
 const groupedSongs = computed(() => {
 	return sliceSongs(uniqBy(props.songs, 'song'))
 })
-const icates = [
-	{
-		label: '英文',
-		code: 'eng',
-		value: 1
-	},
-	...props.cates
-]
+const icates = [...props.cates]
 const cateList = (list: Song[]) => [
 	...(list.length ? [{ columns: 9.2, list: sortedSongs(list), length: list.length }] : [])
 ]
@@ -132,6 +131,26 @@ const sliceSongs = (songs: Song[]) => {
 	})
 	// const eng = remove(songs, (s) => s.type.includes(1))
 	// const oth = remove(songs, (s) => s.type.includes(6))
+	// const less1 = remove(songs, (s) => convLen(s.song) < 2)
+	// const less2 = remove(songs, (s) => convLen(s.song) < 3)
+	// const less3 = remove(songs, (s) => convLen(s.song) < 4)
+	// const less4 = remove(songs, (s) => convLen(s.song) < 5)
+	// const less5 = remove(songs, (s) => convLen(s.song) < 6)
+	// const less6 = remove(songs, (s) => convLen(s.song) < 7)
+	return {
+		// song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
+		// song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
+		// song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
+		// song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
+		// song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
+		// song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
+		...res,
+		song_oth: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs) }] : [])]
+	} as { [key: string]: SliceSong[] }
+}
+const lenSongs = (songs: Song[]) => {
+	const eng = remove(songs, (s) => s.type.includes(1))
+	const oth = remove(songs, (s) => s.type.includes(6))
 	const less1 = remove(songs, (s) => convLen(s.song) < 2)
 	const less2 = remove(songs, (s) => convLen(s.song) < 3)
 	const less3 = remove(songs, (s) => convLen(s.song) < 4)
@@ -139,14 +158,24 @@ const sliceSongs = (songs: Song[]) => {
 	const less5 = remove(songs, (s) => convLen(s.song) < 6)
 	const less6 = remove(songs, (s) => convLen(s.song) < 7)
 	return {
-		song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
-		song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
-		song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
-		song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
-		song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
-		song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
-		song7: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs), length: songs.length }] : [])],
-		...res
+		...(less1.length && { song1: [{ columns: 4, list: sortedSongs(less1) }] }),
+		...(less2.length && { song2: [{ columns: 4, list: sortedSongs(less2) }] }),
+		...(less3.length && { song3: [{ columns: 4, list: sortedSongs(less3) }] }),
+		...(less4.length && { song4: [{ columns: 6, list: sortedSongs(less4) }] }),
+		...(less5.length && { song5: [{ columns: 6, list: sortedSongs(less5) }] }),
+		...(less6.length && { song6: [{ columns: 9.2, list: sortedSongs(less6) }] }),
+		...(eng.length && { eng: [{ columns: 9.2, list: sortedSongs(eng) }] }),
+		...(oth.length && { oth: [{ columns: 9.2, list: sortedSongs(oth) }] }),
+		...(songs.length && { rest: [{ columns: 9.2, list: sortedSongs(songs) }] })
+		// song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
+		// song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
+		// song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
+		// song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
+		// song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
+		// song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
+		// eng: [...(eng.length ? [{ columns: 9.2, list: sortedSongs(eng), length: eng.length }] : [])],
+		// oth: [...(oth.length ? [{ columns: 9.2, list: sortedSongs(oth), length: oth.length }] : [])],
+		// song7: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs), length: songs.length }] : [])]
 	} as { [key: string]: SliceSong[] }
 }
 // 按拼音排序

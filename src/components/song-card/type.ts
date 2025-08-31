@@ -44,5 +44,4 @@ type Tag = {
 export type SliceSong = {
 	columns: number
 	list: Song[]
-	length: number
 }

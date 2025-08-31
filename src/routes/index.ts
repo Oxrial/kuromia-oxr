@@ -87,6 +87,15 @@ export const constantRoutes: RouteRecordRaw[] = [
 		}
 	},
 	{
+		name: 'Kaka',
+		path: '/kaka',
+		component: () => import('@/views/kaka/index.vue'),
+		meta: {
+			title: '优祈KAKA',
+			icon: 'Tickets'
+		}
+	},
+	{
 		path: '/:pathMatch(.*)*', // Must put the 'ErrorPage' route at the end, 必须将 'ErrorPage' 路由放在最后
 		redirect: '/404',
 		name: 'ErrorPage',

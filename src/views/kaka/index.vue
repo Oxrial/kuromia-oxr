@@ -3,19 +3,24 @@
 		:songs="isongs"
 		:slogan="slogan"
 		:avater="{ src: logo, $attr: { img: true } }"
-		vup="Mi"
-		logo-cn="米粒儿"
-		:color="['#1f679d', '#26838d', '#1f9d58', '#398d26']"
+		vup="KAKA"
+		logo-cn="优祈"
+		:color="['#932e2e', '#5A4085', '#44498b', '#24505e']"
 		:cates="[
 			{
-				label: '英文',
-				code: 'eng',
-				value: 1
+				label: '流行',
+				code: 'pop',
+				value: 2
 			},
 			{
-				label: '说唱',
-				code: 'rap',
-				value: 6
+				label: '古风',
+				code: 'ancient',
+				value: 4
+			},
+			{
+				label: 'Kpop',
+				code: 'kpop',
+				value: 7
 			}
 		]"
 	/>
@@ -23,9 +28,9 @@
 
 <script setup lang="ts">
 import type { Song } from '@/components/song-card/type'
-import slogan from '@/assets/songs/mi/logo-bgi.png'
-import songs2 from '@/assets/songs/mi'
-import logo from '@/assets/songs/mi/logo.webp'
+import slogan from '@/assets/songs/kaka/logo-bgi.png'
+import songs2 from '@/assets/songs/kaka'
+import logo from '@/assets/songs/kaka/logo.webp'
 const isongs = [...songs2] as Song[]
 </script>
 
@@ -35,11 +40,11 @@ const isongs = [...songs2] as Song[]
 		45deg,
 		#fffcfd 25%,
 		#66bbf922 25%,
-		#67c23a22 50%,
+		#7a3ac222 50%,
 		#fffcfd 50%,
 		#fffcfd 75%,
 		#409eff22 75%,
-		#409eff55 100%
+		#4f3d7555 100%
 	);
 	:deep(.el-card:not(:first-child)) {
 		background: transparent;

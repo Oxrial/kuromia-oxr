@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import songs from './mi.js'
 const data = []
-console.log(songs)
 // type 中文 0，其他语言 1，流行 2，民谣 3，古风 4，R&B 5，Rap 6
 export const TYPE_ENUMS = {
 	0: '华语',
@@ -11,7 +10,17 @@ export const TYPE_ENUMS = {
 	3: '民谣',
 	4: '古风',
 	5: 'R&B',
-	6: 'Rap'
+	6: 'Rap',
+	7: 'K-POP'
+}
+const Categrory = {
+	zh: 0,
+	eng: 1,
+	pop: 2,
+	ancient: 4,
+	rnb: 5,
+	rap: 6,
+	kpop: 7
 }
 export const TYPES = {
 	中文: '0',
@@ -41,13 +50,13 @@ Object.keys(songs).forEach((k) => {
 	data.push(
 		...songs[k].map((v) => ({
 			song: v,
-			type: [+`${k === 'zh' ? 0 : k == 'eng' ? 1 : k === 'rap' ? 6 : ''}`],
+			type: [Categrory[k]],
 			singer: '',
 			tag: null
 		}))
 	)
 })
-console.log(data)
+// console.log(data)
 
 // fs.writeFileSync(path.join('src', 'assets', 'datatutu.json'), JSON.stringify(data))
 const typer = (s) =>
@@ -66,13 +75,13 @@ const resolve = (data, resolveData) => {
 		const dt = resolveData.find((b) => b.song === d.song)
 		if (dt) {
 			d.singer = dt.singer
-			d.type = dt.type
+			// d.type = dt.type
 		}
 	})
 }
 resolve(data, data1)
-import data2 from './songs/kuromia/index.js'
-resolve(data, data2)
-console.log(data)
-fs.writeFileSync(path.join('src', 'assets', 'datami.json'), JSON.stringify(data))
+// import data2 from './songs/kuromia/index.js'
+// resolve(data, data2)
+// console.log(data)
+fs.writeFileSync(path.join('src', 'assets', 'songs', 'kaka', 'index.js'), JSON.stringify(data))
 // fs.writeFileSync(path.join('src', 'assets', 'chenzaidata.json'), JSON.stringify(data1))
