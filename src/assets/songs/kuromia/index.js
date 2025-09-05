@@ -77,7 +77,7 @@ export default [
 	},
 	{
 		song: 'Ferrari',
-		type: [0],
+		type: [1],
 		singer: 'Bebe Rexha',
 		category: 'pop',
 		tag: 3
@@ -1365,7 +1365,7 @@ export default [
 	},
 	{
 		song: '心如刀割',
-		type: [0, 0, 2],
+		type: [0, 2],
 		singer: '张学友'
 	},
 	{

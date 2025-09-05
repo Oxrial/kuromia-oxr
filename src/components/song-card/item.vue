@@ -3,7 +3,7 @@
 		<div class="song-columns-container" :style="{ columns: `${songs.columns}rem auto` }">
 			<div v-for="item in songs.list" class="song-item" :class="{ 'long-text': convLen(item.song) >= 9 }">
 				<el-badge
-					:hidden="!item.tag || (item.tag && item.tag !== 3) as boolean"
+					:hidden="!item.tag || (item.tag && item.tag != 3) as boolean"
 					:value="item.tag ? item.tagE?.label : ''"
 					:color="(item.tag && item.tagE?.color + '22') || '#a2d3ff'"
 					:badge-style="{

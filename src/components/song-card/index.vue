@@ -129,21 +129,7 @@ const sliceSongs = (songs: Song[]) => {
 	icates.forEach((c) => {
 		res[c.code] = cateList(remove(songs, (s) => s.type.includes(c.value)))
 	})
-	// const eng = remove(songs, (s) => s.type.includes(1))
-	// const oth = remove(songs, (s) => s.type.includes(6))
-	// const less1 = remove(songs, (s) => convLen(s.song) < 2)
-	// const less2 = remove(songs, (s) => convLen(s.song) < 3)
-	// const less3 = remove(songs, (s) => convLen(s.song) < 4)
-	// const less4 = remove(songs, (s) => convLen(s.song) < 5)
-	// const less5 = remove(songs, (s) => convLen(s.song) < 6)
-	// const less6 = remove(songs, (s) => convLen(s.song) < 7)
 	return {
-		// song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
-		// song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
-		// song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
-		// song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
-		// song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
-		// song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
 		...res,
 		song_oth: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs) }] : [])]
 	} as { [key: string]: SliceSong[] }
@@ -163,19 +149,10 @@ const lenSongs = (songs: Song[]) => {
 		...(less3.length && { song3: [{ columns: 4, list: sortedSongs(less3) }] }),
 		...(less4.length && { song4: [{ columns: 6, list: sortedSongs(less4) }] }),
 		...(less5.length && { song5: [{ columns: 6, list: sortedSongs(less5) }] }),
-		...(less6.length && { song6: [{ columns: 9.2, list: sortedSongs(less6) }] }),
-		...(eng.length && { eng: [{ columns: 9.2, list: sortedSongs(eng) }] }),
+		...(less6.length && { song6: [{ columns: 7, list: sortedSongs(less6) }] }),
+		...(eng.length && { eng: [{ columns: 7, list: sortedSongs(eng) }] }),
 		...(oth.length && { oth: [{ columns: 9.2, list: sortedSongs(oth) }] }),
 		...(songs.length && { rest: [{ columns: 9.2, list: sortedSongs(songs) }] })
-		// song1: [...(less1.length ? [{ columns: 4, list: sortedSongs(less1), length: less1.length }] : [])],
-		// song2: [...(less2.length ? [{ columns: 4, list: sortedSongs(less2), length: less2.length }] : [])],
-		// song3: [...(less3.length ? [{ columns: 4, list: sortedSongs(less3), length: less3.length }] : [])],
-		// song4: [...(less4.length ? [{ columns: 6, list: sortedSongs(less4), length: less4.length }] : [])],
-		// song5: [...(less5.length ? [{ columns: 6, list: sortedSongs(less5), length: less5.length }] : [])],
-		// song6: [...(less6.length ? [{ columns: 9.2, list: sortedSongs(less6), length: less6.length }] : [])],
-		// eng: [...(eng.length ? [{ columns: 9.2, list: sortedSongs(eng), length: eng.length }] : [])],
-		// oth: [...(oth.length ? [{ columns: 9.2, list: sortedSongs(oth), length: oth.length }] : [])],
-		// song7: [...(songs.length ? [{ columns: 9.2, list: sortedSongs(songs), length: songs.length }] : [])]
 	} as { [key: string]: SliceSong[] }
 }
 // 按拼音排序

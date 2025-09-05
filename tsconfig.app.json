@@ -28,5 +28,15 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts", "src/**/*.js"]
+	"include": [
+		"scripts/mat.js",
+		"scripts/remat.js",
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"types/**/*.d.ts",
+		"src/**/*.js",
+		"scripts/kuromia.js",
+		"scripts/kaka.js"
+	]
 }
