@@ -5,7 +5,7 @@
 		:avater="{ src: logo, $attr: { img: true } }"
 		vup="KAKA"
 		logo-cn="优祈"
-		:color="['#932e2e', '#5A4085', '#44498b', '#24505e']"
+		:color="['#932e2e', '#5A4085', '#3b78af', '#328339']"
 		:cates="[
 			{
 				label: '流行',
