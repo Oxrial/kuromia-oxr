@@ -109,7 +109,7 @@ const rem = ref(parseInt(getComputedStyle(document.documentElement).fontSize))
 	// width: 100%;
 	.el-tag {
 		font-size: 0.875rem;
-		min-height: 1.5rem;
+		min-height: 1.8rem;
 	}
 }
 .song-item {
@@ -125,7 +125,7 @@ const rem = ref(parseInt(getComputedStyle(document.documentElement).fontSize))
 	padding-bottom: unset;
 	.el-tag {
 		font-size: 0.8rem;
-		height: 40px;
+		height: 33px;
 	}
 }
 </style>

@@ -82,6 +82,7 @@
 		</el-card>
 		<template v-for="lk in Object.keys(groupedSongs)">
 			<template v-for="(lenSong, _, index) in lenSongs(groupedSongs[lk].flatMap((s) => s.list))">
+				{{ _ }}
 				<el-card class="category-card" v-if="lenSong[0]?.list.length">
 					<template v-if="index === 0 && icates.find((c) => c.code === lk)" #header>
 						<span :style="{ color: color[0] }"
@@ -152,7 +153,7 @@ const lenSongs = (songs: Song[]) => {
 		...(less6.length && { song6: [{ columns: 7, list: sortedSongs(less6) }] }),
 		...(eng.length && { eng: [{ columns: 7, list: sortedSongs(eng) }] }),
 		...(oth.length && { oth: [{ columns: 9.2, list: sortedSongs(oth) }] }),
-		...(songs.length && { rest: [{ columns: 9.2, list: sortedSongs(songs) }] })
+		...(songs.length && { rest: [{ columns: 6.6, list: sortedSongs(songs) }] })
 	} as { [key: string]: SliceSong[] }
 }
 // 按拼音排序
