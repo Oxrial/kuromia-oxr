@@ -82,7 +82,6 @@
 		</el-card>
 		<template v-for="lk in Object.keys(groupedSongs)">
 			<template v-for="(lenSong, _, index) in lenSongs(groupedSongs[lk].flatMap((s) => s.list))">
-				{{ _ }}
 				<el-card class="category-card" v-if="lenSong[0]?.list.length">
 					<template v-if="index === 0 && icates.find((c) => c.code === lk)" #header>
 						<span :style="{ color: color[0] }"
